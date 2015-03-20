@@ -1,38 +1,13 @@
-package aani;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-import java.io.*;
-import java.net.URL;
-import java.util.Scanner;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.Mixer;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
-import javax.swing.*;
-
-public class Main extends JFrame {
-
-    public static void main(String[] args) {
-        Sample untitled = new Sample("drums107.wav");
-        Sample yksi = new Sample("skr.wav");
-        
-        
-
-        yksi.start();
-        untitled.start();
-
-
-        Scanner reader = new Scanner(System.in);
-        while (true) {
-            String stop = reader.nextLine();
-            if (stop.equals("stop")) {
-                
-            }
-
-        }
-    }
-
+/**
+ *
+ * @author Konsta
+ */
+public class Main {
+    
 }
