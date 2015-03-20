@@ -1,4 +1,4 @@
-package aani;
+package Sampleri;
 
 import java.io.*;
 import java.net.URL;
