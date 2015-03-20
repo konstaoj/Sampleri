@@ -16,8 +16,8 @@ import javax.swing.*;
 public class Main extends JFrame {
 
     public static void main(String[] args) {
-        Sample untitled = new Sample("untitled.wav");
-        Sample yksi = new Sample("1.wav");
+        Sample untitled = new Sample("drums107.wav");
+        Sample yksi = new Sample("skr.wav");
         
         
 
