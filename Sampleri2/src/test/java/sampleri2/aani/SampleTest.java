@@ -147,7 +147,7 @@ public class SampleTest {
     
     @Test
     public void isSamplePlayable() throws LineUnavailableException, URISyntaxException {
-        Sample untitled = new Sample("1.wav");
+        Sample untitled = new Sample("1.wav", "1");
         untitled.start();
         untitled.buttonPressed = true;
         assertTrue(untitled.getClip().isActive());
@@ -156,7 +156,7 @@ public class SampleTest {
     
     @Test
     public void sampleStopIsWorking() throws LineUnavailableException, URISyntaxException, InterruptedException {
-        Sample untitled = new Sample("1.wav");
+        Sample untitled = new Sample("1.wav", "1");
         untitled.start();
         untitled.buttonPressed = true;
         Thread.sleep(100);
@@ -166,7 +166,7 @@ public class SampleTest {
     
     @Test
     public void isNewThreadCreated() throws LineUnavailableException, URISyntaxException {
-        Sample untitled = new Sample("1.wav");
+        Sample untitled = new Sample("1.wav", "1");
         untitled.start();
         assertFalse(untitled.getThread() == null);
     }

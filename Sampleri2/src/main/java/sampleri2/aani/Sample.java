@@ -21,12 +21,14 @@ public class Sample implements Runnable {
 
     private Mixer mixer;
     private Clip clip;
+    private String fileName;
     private String name;
     private Thread t;
     public boolean buttonPressed;
 
-    public Sample(String name) throws LineUnavailableException, URISyntaxException {
+    public Sample(String fileName, String name) throws LineUnavailableException, URISyntaxException {
         this.name = name;
+        this.fileName = fileName;
         buttonPressed = false;
 
         Mixer.Info[] mixInfos = AudioSystem.getMixerInfo();
@@ -47,7 +49,7 @@ public class Sample implements Runnable {
 
         try {
 
-            File soundFile = new File(this.getClass().getResource("/" + this.name).toURI());
+            File soundFile = new File(this.getClass().getResource("/" + this.fileName).toURI());
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundFile);
 
             this.clip.open(audioStream);
@@ -85,7 +87,7 @@ public class Sample implements Runnable {
     }
 
     public void loopSample() {
-        this.clip.setLoopPoints(0, this.clip.getFrameLength() / 20);
+        this.clip.setLoopPoints(0, this.clip.getFrameLength() / 2);
         //this.clip.setLoopPoints(0, -1);
         this.clip.loop(Clip.LOOP_CONTINUOUSLY);
 
@@ -108,7 +110,7 @@ public class Sample implements Runnable {
 
     public void start() {
         if (this.t == null) {
-            this.t = new Thread(this, this.name);
+            this.t = new Thread(this, this.fileName);
             this.t.start();
         } else {
             t.start();
@@ -118,6 +120,10 @@ public class Sample implements Runnable {
     
     public Clip getClip() {
         return this.clip;
+    }
+    
+    public String getName() {
+        return this.name;
     }
     
     public Thread getThread() {

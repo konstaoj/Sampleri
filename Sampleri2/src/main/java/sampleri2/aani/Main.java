@@ -13,18 +13,30 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.Mixer;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import sampleri2.gui.Interface;
+import sampleri2.logic.SamplePlayer;
 
 public class Main {
+    
+    public Sample g;
 
     public static void main(String[] args) throws LineUnavailableException, URISyntaxException, InterruptedException {
-
-        Sample untitled = new Sample("untitled.wav");
-        Sample yksi = new Sample("1.wav");
-        untitled.start(); 
-        yksi.start();
+        Sample g = new Sample("untitled.wav", "g");
+        Sample h = new Sample("1.wav", "h");                
         
-        SampleControl untitledVol = new SampleControl(untitled);
-        untitledVol.setVolume(1.0); //voluumi 0.0-1.0
+        SamplePlayer player = new SamplePlayer(g,h);
+        
+        Interface gui = new Interface(player);
+        gui.setVisible(true);
+        
+        
+        
+        
+        
+        
+        
+        //SampleControl untitledVol = new SampleControl(g);
+        //untitledVol.setVolume(0.3); //voluumi 0.0-1.0
         
         //scanneriin "a" ja "s" painamalla voidaan käynnistää sämplejä uudelleen
         //ja uudelleen alusta ja päällekäin, köyhänmiehen prototyyppikäyttöliittymä
@@ -33,20 +45,21 @@ public class Main {
         while (true) {
             String stop = reader.nextLine();
             if (stop.equals("a")) {
-                if (untitled.buttonPressed) {
-                    untitled.buttonPressed = false;
+                if (g.buttonPressed) {
+                    g.buttonPressed = false;
                 } else {
-                    untitled.buttonPressed = true;
+                    g.buttonPressed = true;
                 }
             }
             
             if (stop.equals("s")) {
-                if (yksi.buttonPressed) {
-                    yksi.buttonPressed = false;
+                if (h.buttonPressed) {
+                    h.buttonPressed = false;
                 } else {
-                    yksi.buttonPressed = true;
+                    h.buttonPressed = true;
                 }
             }
+            
 
         }
 

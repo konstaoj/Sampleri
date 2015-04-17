@@ -46,14 +46,14 @@ public class SampleControlTest {
     //
     @Test
     public void isVolumeControlAvailable() throws LineUnavailableException, URISyntaxException {
-        Sample untitled = new Sample("1.wav");
+        Sample untitled = new Sample("1.wav", "1");
         assertTrue(untitled.getClip().isControlSupported((FloatControl.Type.MASTER_GAIN)));
         
     }
     
     @Test
     public void settingNewVolume() throws LineUnavailableException, URISyntaxException {
-        Sample untitled = new Sample("1.wav");
+        Sample untitled = new Sample("1.wav", "untitled");
         FloatControl volControl = (FloatControl) untitled.getClip().getControl(FloatControl.Type.MASTER_GAIN);
         float dB = 0;
         volControl.setValue(dB);
